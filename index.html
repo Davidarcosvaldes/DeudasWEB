@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis Deudas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📋 Mis Deudas</h1>
+
+  <form id="debt-form">
+    <input type="text" id="nombre" placeholder="Nombre de la deuda" required>
+    <input type="number" id="monto" placeholder="Monto o cuota" required>
+    <input type="date" id="fecha" required>
+    <input type="number" id="cuotas" placeholder="Cuotas totales" required>
+
+    <select id="frecuencia" required>
+      <option value="" disabled selected>Frecuencia de pago</option>
+      <option value="mensual">Mensual</option>
+      <option value="semestral">Semestral</option>
+      <option value="anual">Anual</option>
+    </select>
+
+    <button type="submit">Agregar deuda</button>
+  </form>
+
+  <h2>Listado de deudas</h2>
+  <ul id="deuda-lista"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>
