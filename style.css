@@ -53,3 +53,34 @@ body {
   .cuotas-lista input[type="checkbox"] {
     margin-right: 8px;
   }
+
+  .deuda-header {
+  background-color: #e6e6e6;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-arrow {
+  font-size: 16px;
+  color: #232af6;
+}
+
+.deuda-item button {
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.deuda-item button:hover {
+  background-color: #c0392b;
+}

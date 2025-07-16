@@ -37,12 +37,17 @@ function renderizarDeudas() {
   deudas.forEach((deuda, deudaIndex) => {
     const li = document.createElement("li");
     li.className = "deuda-item";
+    
+    const cuotasPagadas = deuda.cuotas.filter(c => c.pagado).length;
+
+    // Botón para expandir/cerrar
     li.innerHTML = `
-      <strong>${deuda.nombre}</strong><br>
-      Monto: $${deuda.monto}<br>
-      Cuotas pagadas: ${deuda.cuotas.filter(c => c.pagado).length} / ${deuda.cuotas.length}<br>
-      <div class="cuotas-lista" id="cuotas-${deudaIndex}"></div>
-      <button onclick="eliminarDeuda(${deudaIndex})">Eliminar deuda</button>
+    <div class="deuda-header">
+      <strong>${deuda.nombre}</strong> - ${cuotasPagadas}/${deuda.cuotas.length} cuotas pagadas
+      <span class="toggle-arrow" onclick="toggleCuotas(${deudaIndex}, event)">▶</span>
+    </div>
+    <div class="cuotas-lista" id="cuotas-${deudaIndex}" style="display: none;"></div>
+    <button onclick="eliminarDeuda(${deudaIndex})">Eliminar deuda</button>
     `;
 
     lista.appendChild(li);
@@ -65,6 +70,13 @@ function renderizarDeudas() {
       contenedorCuotas.appendChild(div);
     });
   });
+}
+
+// Función para mostrar/ocultar cuotas
+function toggleCuotas(index, event) {
+  event.stopPropagation(); // evita que otros clics interfieran
+  const contenedor = document.getElementById(`cuotas-${index}`);
+  contenedor.style.display = (contenedor.style.display === "none") ? "block" : "none";
 }
 
 function eliminarDeuda(index) {
